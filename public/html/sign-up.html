@@ -1,0 +1,42 @@
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link href="../css/sign-up.css" rel="stylesheet">
+        <title>Sign Up Form</title>
+    </head>
+    <body>
+
+      <form action="/add" method="post">
+        
+        <h1>Sign Up</h1>
+        
+        <fieldset>
+          
+          <legend><span class="number">1</span> Your basic info</legend>
+          
+          <label for="name">Name:</label>
+          <input type="text" id="name" name="user_name">
+          
+          <label for="mail">Email:</label>
+          <input type="email" id="mail" name="user_email">
+          
+          <label for="password">Password:</label>
+          <input type="password" id="password" name="user_password">
+
+          <label for="password">Confirm Password:</label>
+          <input type="password" id="password">
+          
+          <label>User Type:</label>
+          <input type="radio" name="user_type" value="승객" /><label for="under_13" class="light">승객</label><br>
+          <input type="radio" name="user_type" value="기사" /><label for="over_13" class="light">기사</label>
+        
+        </fieldset>
+          
+        <button type="submit">Sign Up</button>
+        
+      </form>
+
+      
+    </body>
+</html>

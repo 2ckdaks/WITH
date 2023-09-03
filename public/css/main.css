@@ -1,0 +1,86 @@
+body{
+    margin:0;
+}
+.main-header{
+    display:flex;
+    width:80%;
+    height:100px;
+    margin:auto;
+    align-items: center;
+    justify-content: space-between;
+}
+.main-border{
+    width:80%;
+    height:200px;
+    background-color:ivory;
+    margin:auto;
+    padding:10px;
+}
+
+.main-border-more{
+    display: flex;
+    width:90%;
+    margin:auto;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.main-border-menu{
+    display : flex;
+    align-items: center;
+    justify-content: space-around;
+}
+
+.main-border-btn{
+    width:80%;
+    height:30px;
+    text-align: left;
+}
+
+.main-map{
+    width:80%;
+    height:600px;
+    margin:auto;
+}
+
+.navi{
+    display: flex;
+    width:80%;
+    height:50px;
+    margin:auto;
+    align-items: center;
+}
+.navi input{
+    margin-right:10px;
+}
+.navi button{
+    margin-right:50px;
+}
+
+.footer{
+    width: 100%;
+    height:60px;
+    position:fixed;
+    bottom: 0;
+    background-color: gray;
+    display:flex;
+    align-items: center;
+    justify-content: space-around;
+}
+
+.main-border-link{
+    align-items: center;
+}
+
+a:link {
+    color:black;
+}
+
+a:visited{
+    color:black;
+}
+
+a:hover{
+    color:black;
+}
+

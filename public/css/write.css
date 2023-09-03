@@ -1,0 +1,18 @@
+body{
+    margin:0;
+}
+.main-header{
+    display:flex;
+    width:80%;
+    height:100px;
+    margin:auto;
+    align-items: center;
+    justify-content: space-between;
+}
+.main-border{
+    width:80%;
+    height:600px;
+    background-color: antiquewhite;
+    margin:auto;
+    padding:10px;
+}

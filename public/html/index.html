@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="../css/main.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css" integrity="sha512-xh6O/CkQoPOWDdYTDqeRdPCVd1SpvCA9XXcUnZS2FmJNp1coAFzvtCN9BmamE+4aHK8yyUHUSCcJHgXloTyT2A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <title>Document</title>
+</head>
+<body>
+    <header>
+        <div class="main-header">
+            <img src="../main-mark.png" style="width:100px;">
+            <i class="fa-solid fa-user fa-3x"></i>
+        </div>
+    </header>
+    <br><br>
+    <!-- 택시 구하는 게시판 미리보기 -->
+    <div class="main-border"> 
+        <div class="main-border-more">
+            <h3>Ride Together (최신목록 5개 출력)</h3> 
+            <span style="color:red;">더 보기</span>
+        </div>
+        <ul>
+            <ol>
+                <span>생성할 방 정보를 서버로 전송 후 화면(게시판)에 출력 (출발지 목적지 시간)</span>
+            </ol>
+            <ol>
+                <button>어디에서 -> 어디    9:30am</button>
+            </ol>
+        </ul>
+    </div>
+    <br><br>
+    <!--출발지랑 목적지 입력하면 경로,시간,요금 출력?-->
+    <div class="navi">
+        <div>
+            <input type="text" placeholder="출발지를 입력해보세요.">
+            <input type="text" placeholder="목적지를 입력해보세요.">
+            <button>완료</button>
+        </div>
+
+        <div>
+            <div>
+                <span>소요시간 : </span>
+            </div>
+            <br>
+            <div>
+                <span>비용 : </span>
+            </div>
+        </div>
+    </div>
+
+    
+
+    <br>
+
+    <div class="main-map"> 
+        <iframe src="https://www.google.com/maps/embed?pb=!1m14!1m12!1m3!1d12775.276412074332!2d127.13656985!3d36.822854500000005!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!5e0!3m2!1sko!2skr!4v1665239407384!5m2!1sko!2skr" width="100%" height="600" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+    </div>
+    
+
+
+    <!-- <footer class="footer">
+        <i class="fa-solid fa-house fa-2x"></i>
+        <i class="fa-solid fa-border-all fa-2x"></i>
+        <i class="fa-solid fa-taxi fa-2x"></i>
+        <i class="fa-solid fa-gear fa-2x"></i>
+    </footer> -->
+</body>
+</html>
