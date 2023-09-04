@@ -87,11 +87,11 @@ passport.use(
           if (에러) return done(에러);
 
           if (!결과)
-            return done(null, false, { message: "존재하지않는 아이디요" });
+            return done(null, false, { message: "존재하지않는 아이디입니다" });
           if (입력한비번 == 결과.비밀번호) {
             return done(null, 결과);
           } else {
-            return done(null, false, { message: "비번틀렸어요" });
+            return done(null, false, { message: "비번가 틀렸습니다." });
           }
         }
       );
@@ -103,7 +103,7 @@ passport.use(
 passport.serializeUser(function (user, done) {
   done(null, user.메일);
 });
-//요건 마이페이지 만들때
+//마이페이지 만들때
 passport.deserializeUser(function (아이디, done) {
   db.collection("user").findOne({ 메일: 아이디 }, function (에러, 결과) {
     done(null, 결과);
@@ -124,7 +124,7 @@ function 로그인했니(요청, 응답, next) {
   if (요청.user) {
     next();
   } else {
-    응답.send("로그인안하셨는데요?");
+    응답.send("로그인을 해주세요");
   }
 }
 
@@ -260,19 +260,13 @@ app.get("/chat/:id", 로그인했니, function (요청, 응답) {
 io.on("connection", function (socket) {
   console.log("유저 접속됨");
 
-  socket.on("room1-send", function (data) {
-    io.to("room1").emit("broadcast", data);
-  });
-
-  socket.on("room1", function (사용자) {
-    io.to("room1").emit("broadcast", 사용자);
+  socket.on("room-send", function (data) {
+    // 게시글 고유의 방에 있는 모든 클라이언트에게 메시지 전송
+    io.to(data.room).emit("broadcast", data);
   });
 
   socket.on("joinroom", function (data) {
-    socket.join("room1");
-  });
-
-  socket.on("user-send", function (data) {
-    io.to(socket.id).emit("broadcast", data);
+    // 클라이언트를 게시글 고유의 방에 조인
+    socket.join(data.room);
   });
 });
