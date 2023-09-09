@@ -27,7 +27,10 @@ app.use(passport.session());
 
 var db; // 환경변수 설정
 MongoClient.connect(process.env.DB_URL, function (에러, client) {
-  if (에러) return console.log(에러);
+  if (에러) {
+    console.error("MongoDB 연결 에러:", 에러);
+    process.exit(1); // 서버 종료 또는 다른 조치를 취할 수 있음
+  }
   db = client.db("with");
   http.listen(8080, function () {
     console.log("listening 8080");
@@ -38,13 +41,16 @@ MongoClient.connect(process.env.DB_URL, function (에러, client) {
 app.get("/login", function (요청, 응답) {
   응답.render("login.ejs");
 });
+
 app.post(
   "/login",
   passport.authenticate("local", { failureRedirect: "/fail" }),
   function (요청, 응답) {
+    // 인증에 성공했을 때 처리
     응답.redirect("/");
   }
 );
+
 app.get("/fail", function (요청, 응답) {
   응답.render("fail.ejs");
 });
@@ -57,7 +63,6 @@ app.get("/sign-up", function (요청, 응답) {
 //가입시 정보 저장
 //add는 form action으로 지정한거
 app.post("/add", function (요청, 응답) {
-  응답.send("전송완료");
   db.collection("user").insertOne(
     {
       이름: 요청.body.user_name,
@@ -66,7 +71,13 @@ app.post("/add", function (요청, 응답) {
       유형: 요청.body.user_type,
     },
     function (에러, 결과) {
-      console.log("저장완료");
+      if (에러) {
+        console.error("데이터베이스 삽입 에러:", 에러);
+        응답.status(500).send("서버 오류");
+      } else {
+        console.log("저장완료");
+        응답.send("전송완료");
+      }
     }
   );
 });
@@ -120,11 +131,12 @@ app.get("/", 로그인했니, function (요청, 응답) {
     });
 });
 
+//예외처리
 function 로그인했니(요청, 응답, next) {
   if (요청.user) {
     next();
   } else {
-    응답.send("로그인을 해주세요");
+    응답.status(401).send("로그인을 해주세요"); // 로그인되지 않은 경우 401 상태코드 반환
   }
 }
 
